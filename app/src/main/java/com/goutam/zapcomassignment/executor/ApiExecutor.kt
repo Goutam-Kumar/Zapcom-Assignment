@@ -2,7 +2,7 @@ package com.goutam.zapcomassignment.executor
 
 import retrofit2.Response
 
-abstract class ApiExecutor {
+object ApiExecutor {
     suspend fun <T> triggerApiCall( apiCall: suspend () -> Response<T> ): NetworkResponse<T> {
         try{
             val response = apiCall()

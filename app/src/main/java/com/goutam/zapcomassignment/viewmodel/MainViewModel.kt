@@ -27,8 +27,8 @@ class MainViewModel @Inject constructor(private val productRepo: ProductsReposit
         productRepo.fetchProductDetails().collect { result ->
             _isLoading.value = false
             when(result) {
-                is NetworkResponse.Success -> { _productDetailsList.value = result.data ?: emptyList() }
-                is NetworkResponse.Error -> { _errorMessage.value = result.message.orEmpty() }
+                is NetworkResponse.Success -> { _productDetailsList.value = result.data }
+                is NetworkResponse.Error -> { _errorMessage.value = result.message }
             }
         }
     }

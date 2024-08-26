@@ -1,9 +1,6 @@
 package com.goutam.zapcomassignment.executor
 
-sealed class NetworkResponse<T>(
-    val data: T? = null,
-    val message: String? = null
-) {
-    class Success<T>(data: T): NetworkResponse<T>(data)
-    class Error<T>(message: String, data: T? = null): NetworkResponse<T>(data, message)
+sealed class NetworkResponse<out R>{
+    data class Success<T>(val data: T): NetworkResponse<T>()
+    data class Error(val message: String): NetworkResponse<Nothing>()
 }

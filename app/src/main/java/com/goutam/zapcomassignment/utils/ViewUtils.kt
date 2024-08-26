@@ -3,8 +3,6 @@ package com.goutam.zapcomassignment.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 
 class ViewUtils {
     companion object {
@@ -24,12 +22,5 @@ class ViewUtils {
             return result
         }
 
-        inline fun <V: ViewModel> getViewModelFactory(crossinline getVMObject: () -> V): ViewModelProvider.Factory {
-            return object: ViewModelProvider.Factory{
-                override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return getVMObject() as T
-                }
-            }
-        }
     }
 }
